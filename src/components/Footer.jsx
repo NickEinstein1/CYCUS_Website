@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Linkedin } from 'lucide-react';
 import './Footer.css';
 
@@ -14,39 +15,47 @@ const Footer = () => {
         <footer className="footer">
             <div className="container footer-grid">
                 <div className="footer-brand">
-                    <a href="/" className="logo-link">
+                    <Link to="/" className="logo-link">
                         <span className="text-white">CY</span>
                         <span className="text-primary">CUS</span>
-                    </a>
+                    </Link>
                     <p>
                         Reshaping industries and weaving advanced technology into the fabric of business.
                         We drive innovation that matters.
                     </p>
                     <div className="social-links">
-                        <a href="#" className="social-link"><Linkedin size={20} /></a>
-                        <a href="#" className="social-link"><XIcon size={20} /></a>
-                        <a href="#" className="social-link"><Instagram size={20} /></a>
-                        <a href="#" className="social-link"><Facebook size={20} /></a>
+                        <a href="https://linkedin.com/company/cycus" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="LinkedIn">
+                            <Linkedin size={20} />
+                        </a>
+                        <a href="https://twitter.com/cycus" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="X (Twitter)">
+                            <XIcon size={20} />
+                        </a>
+                        <a href="https://instagram.com/cycus" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Instagram">
+                            <Instagram size={20} />
+                        </a>
+                        <a href="https://facebook.com/cycus" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Facebook">
+                            <Facebook size={20} />
+                        </a>
                     </div>
                 </div>
 
                 <div>
                     <h4>Services</h4>
                     <ul className="footer-links">
-                        <li><a href="#">Web Development</a></li>
-                        <li><a href="#">AI Solutions</a></li>
-                        <li><a href="#">Data Analytics</a></li>
-                        <li><a href="#">Cybersecurity</a></li>
+                        <li><Link to="/services/web-software-development">Web & Software Development</Link></li>
+                        <li><Link to="/services/ai-powered-solutions">AI & Innovation</Link></li>
+                        <li><Link to="/services/data-analytics">Data Intelligence</Link></li>
+                        <li><Link to="/services/cybersecurity-solutions">Cyber Defense</Link></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4>Company</h4>
                     <ul className="footer-links">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
+                        <li><Link to="/about">About Us</Link></li>
+                        <li><Link to="/contact">Contact</Link></li>
+                        <li><Link to="/services">All Services</Link></li>
+                        <li><Link to="/">Home</Link></li>
                     </ul>
                 </div>
             </div>

@@ -43,22 +43,16 @@ const SecurityArchitectureDiagram = () => {
                 </motion.div>
 
                 {/* Orbiting Security Nodes */}
-                <Node orbitDuration={8} offset={0} label="Encryption" />
-                <Node orbitDuration={8} offset={120} label="Compliance" />
-                <Node orbitDuration={8} offset={240} label="Threat Detection" />
+                <Node orbitDuration={8} offset={0} />
+                <Node orbitDuration={8} offset={120} />
+                <Node orbitDuration={8} offset={240} />
 
-            </div>
-
-            <div className="mt-8 grid grid-cols-3 gap-4 text-center w-full">
-                <Metric label="Encryption" value="AES-256" />
-                <Metric label="Uptime" value="99.99%" />
-                <Metric label="Threats Blocked" value="24/7" />
             </div>
         </div>
     );
 };
 
-const Node = ({ orbitDuration, offset, label }) => {
+const Node = ({ orbitDuration, offset }) => {
     return (
         <motion.div
             className="absolute w-full h-full"
@@ -67,22 +61,10 @@ const Node = ({ orbitDuration, offset, label }) => {
             transition={{ duration: orbitDuration, repeat: Infinity, ease: "linear" }}
         >
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                <div className="relative group">
-                    <div className="w-4 h-4 bg-white rounded-full shadow-[0_0_10px_white]" />
-                    <div className="absolute top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap bg-black/80 px-2 py-1 rounded text-xs text-white border border-white/20">
-                        {label}
-                    </div>
-                </div>
+                <div className="w-4 h-4 bg-white rounded-full shadow-[0_0_10px_white]" />
             </div>
         </motion.div>
     );
 };
-
-const Metric = ({ label, value }) => (
-    <div className="flex flex-col">
-        <span className="text-[var(--color-primary)] font-bold text-lg">{value}</span>
-        <span className="text-xs text-gray-500 uppercase tracking-wider">{label}</span>
-    </div>
-);
 
 export default SecurityArchitectureDiagram;
