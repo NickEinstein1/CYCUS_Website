@@ -1,99 +1,138 @@
-import React from 'react';
-import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import React, { useState } from 'react';
+import { Send, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import './Contact.css';
 
 const ContactSection = () => {
+    const [done, setDone] = useState(false);
+    const [form, setForm] = useState({ name: '', email: '', service: '', message: '' });
+
+    const onChange = e => setForm(p => ({ ...p, [e.target.name]: e.target.value }));
+    const onSubmit = e => { e.preventDefault(); setDone(true); };
+
     return (
-        <section id="contact" className="contact-section">
-            {/* Background Elements */}
-            <div className="contact-bg-glow" />
-
-            <div className="container contact-grid">
-                {/* Helper Content */}
-                <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    className="contact-info-wrapper"
-                >
-                    <div>
-                        <span className="contact-label">Get in Touch</span>
-                        <h2 className="contact-title">Let's Build the <br /> Future Together</h2>
-                        <p className="contact-description">
-                            Whether you have a groundbreaking idea or need to optimize your existing infrastructure,
-                            CYCUS is ready to partner with you. Reach out to us for a consultation.
+        <section id="contact" className="ctct">
+            <div className="container">
+                <div className="ctct__inner">
+                    {/* Left */}
+                    <div className="ctct__left">
+                        <p className="ctct__label">Start the Conversation</p>
+                        <h2 className="ctct__title">
+                            Have a project<br />
+                            <em>in mind?</em>
+                        </h2>
+                        <p className="ctct__desc">
+                            We work with ambitious organisations ready to leverage technology as a
+                            competitive advantage. Tell us about your goals and we'll respond within 24 hours.
                         </p>
-                    </div>
 
-                    <div className="contact-methods">
-                        <div className="contact-method">
-                            <div className="icon-box">
-                                <Mail size={24} />
+                        <div className="ctct__info">
+                            <div className="ctct__info-item">
+                                <span className="ctct__info-label">Email</span>
+                                <a href="mailto:contact@cycus.co.ke" className="ctct__info-val">contact@cycus.co.ke</a>
                             </div>
-                            <div className="method-details">
-                                <h4>Email Us</h4>
-                                <a href="mailto:contact@cycus.co.ke">contact@cycus.co.ke</a>
+                            <div className="ctct__info-item">
+                                <span className="ctct__info-label">Phone</span>
+                                <a href="tel:+254700872051" className="ctct__info-val">+254 700 872 051</a>
+                            </div>
+                            <div className="ctct__info-item">
+                                <span className="ctct__info-label">Location</span>
+                                <span className="ctct__info-val">Nairobi, Kenya</span>
                             </div>
                         </div>
 
-                        <div className="contact-method">
-                            <div className="icon-box">
-                                <MapPin size={24} />
-                            </div>
-                            <div className="method-details">
-                                <h4>Visit Us</h4>
-                                <p>Nairobi, Kenya</p>
-                            </div>
-                        </div>
-
-                        <div className="contact-method">
-                            <div className="icon-box">
-                                <Phone size={24} />
-                            </div>
-                            <div className="method-details">
-                                <h4>Call Us</h4>
-                                <p>+254 (0) 700 872 051</p>
-                            </div>
+                        <div className="ctct__avail">
+                            <span className="ctct__avail-dot" />
+                            Available Mon – Fri, 8 AM – 6 PM EAT
                         </div>
                     </div>
-                </motion.div>
 
-                {/* Form */}
-                <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    className="contact-form-wrapper"
-                >
-                    <form>
-                        <div className="form-row">
-                            <div className="form-group">
-                                <label>First Name</label>
-                                <input type="text" className="form-control" placeholder="John" />
-                            </div>
-                            <div className="form-group">
-                                <label>Last Name</label>
-                                <input type="text" className="form-control" placeholder="Doe" />
-                            </div>
-                        </div>
+                    {/* Right — Form */}
+                    <div className="ctct__right">
+                        {done ? (
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="ctct__success"
+                            >
+                                <CheckCircle size={48} className="ctct__success-icon" />
+                                <h3>Message received.</h3>
+                                <p>We'll be in touch within 24 hours. Looking forward to the conversation.</p>
+                                <button
+                                    onClick={() => { setDone(false); setForm({ name: '', email: '', service: '', message: '' }); }}
+                                    className="btn btn-outline"
+                                >
+                                    Send another
+                                </button>
+                            </motion.div>
+                        ) : (
+                            <form className="ctct__form" onSubmit={onSubmit}>
+                                <div className="ctct__group">
+                                    <label className="ctct__field-label">Your name</label>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        value={form.name}
+                                        onChange={onChange}
+                                        placeholder="John Doe"
+                                        className="ctct__input"
+                                        required
+                                    />
+                                </div>
 
-                        <div className="form-group">
-                            <label>Email Address</label>
-                            <input type="email" className="form-control" placeholder="john@company.com" />
-                        </div>
+                                <div className="ctct__group">
+                                    <label className="ctct__field-label">Email address</label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        value={form.email}
+                                        onChange={onChange}
+                                        placeholder="john@company.com"
+                                        className="ctct__input"
+                                        required
+                                    />
+                                </div>
 
-                        <div className="form-group">
-                            <label>Message</label>
-                            <textarea rows="4" className="form-control" placeholder="Tell us about your project..."></textarea>
-                        </div>
+                                <div className="ctct__group">
+                                    <label className="ctct__field-label">Service of interest</label>
+                                    <select
+                                        name="service"
+                                        value={form.service}
+                                        onChange={onChange}
+                                        className="ctct__input ctct__select"
+                                    >
+                                        <option value="">Select a service…</option>
+                                        <option value="web">Web &amp; Software Development</option>
+                                        <option value="ai">AI &amp; Innovation</option>
+                                        <option value="cyber">Cyber Defense</option>
+                                        <option value="data">Data Intelligence</option>
+                                        <option value="it">IT Infrastructure</option>
+                                        <option value="health">HealthTech Solutions</option>
+                                        <option value="logistics">Smart Logistics</option>
+                                        <option value="custom">Tailored Solutions</option>
+                                    </select>
+                                </div>
 
-                        <button type="button" className="submit-btn group">
-                            Send Message
-                            <Send size={18} className="transition-transform group-hover:translate-x-1" />
-                        </button>
-                    </form>
-                </motion.div>
+                                <div className="ctct__group">
+                                    <label className="ctct__field-label">Message</label>
+                                    <textarea
+                                        name="message"
+                                        value={form.message}
+                                        onChange={onChange}
+                                        rows="5"
+                                        placeholder="Tell us about your project, goals, and timeline…"
+                                        className="ctct__input ctct__textarea"
+                                        required
+                                    />
+                                </div>
+
+                                <button type="submit" className="ctct__submit">
+                                    Send Message <Send size={15} />
+                                </button>
+                            </form>
+                        )}
+                    </div>
+                </div>
             </div>
         </section>
     );

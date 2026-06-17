@@ -1,0 +1,68 @@
+/* ═══ 404 NOT FOUND ═══ */
+.notfound {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+}
+
+.notfound__glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 500px;
+    background: radial-gradient(ellipse, rgba(214, 6, 6, 0.1) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+.notfound__content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    max-width: 560px;
+}
+
+.notfound__label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+.notfound__code {
+    font-size: clamp(7rem, 20vw, 12rem);
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.notfound__title {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+}
+
+.notfound__desc {
+    font-size: 1.0625rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+}
+
+.notfound__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+    justify-content: center;
+}

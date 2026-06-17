@@ -1,6 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import './ParticleField.css';
 
+const COLORS = ['rgba(214, 6, 6, 0.75)', 'rgba(255, 80, 80, 0.55)', 'rgba(180, 0, 0, 0.65)'];
+const CONNECT_COLOR = 'rgba(214, 6, 6,';
+
 const ParticleField = () => {
     const canvasRef = useRef(null);
 
@@ -9,67 +12,56 @@ const ParticleField = () => {
         if (!canvas) return;
 
         const ctx = canvas.getContext('2d');
-        let animationFrameId;
+        let raf;
         let particles = [];
 
-        const resizeCanvas = () => {
-            canvas.width = window.innerWidth;
+        const resize = () => {
+            canvas.width  = window.innerWidth;
             canvas.height = window.innerHeight;
         };
 
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
+        resize();
+        window.addEventListener('resize', resize, { passive: true });
 
         class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 0.5;
-                this.speedX = (Math.random() - 0.5) * 0.5;
-                this.speedY = (Math.random() - 0.5) * 0.5;
-                this.opacity = Math.random() * 0.5 + 0.2;
-                this.color = Math.random() > 0.5 ? '#06b6d4' : '#3b82f6';
+            constructor() { this.reset(); }
+            reset() {
+                this.x       = Math.random() * canvas.width;
+                this.y       = Math.random() * canvas.height;
+                this.size    = Math.random() * 1.8 + 0.4;
+                this.speedX  = (Math.random() - 0.5) * 0.4;
+                this.speedY  = (Math.random() - 0.5) * 0.4;
+                this.opacity = Math.random() * 0.45 + 0.15;
+                this.color   = COLORS[Math.floor(Math.random() * COLORS.length)];
             }
-
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
-
-                if (this.x > canvas.width) this.x = 0;
-                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width)  this.x = 0;
+                if (this.x < 0)             this.x = canvas.width;
                 if (this.y > canvas.height) this.y = 0;
-                if (this.y < 0) this.y = canvas.height;
+                if (this.y < 0)             this.y = canvas.height;
             }
-
             draw() {
-                ctx.fillStyle = this.color;
-                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle    = this.color;
+                ctx.globalAlpha  = this.opacity;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
             }
         }
 
-        const init = () => {
-            particles = [];
-            const numberOfParticles = Math.floor((canvas.width * canvas.height) / 15000);
-            for (let i = 0; i < numberOfParticles; i++) {
-                particles.push(new Particle());
-            }
-        };
-
-        const connectParticles = () => {
-            const maxDistance = 150;
+        const connect = () => {
+            const maxDist = 130;
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < maxDistance) {
-                        ctx.strokeStyle = '#06b6d4';
-                        ctx.globalAlpha = (1 - distance / maxDistance) * 0.2;
-                        ctx.lineWidth = 0.5;
+                    const d  = Math.sqrt(dx * dx + dy * dy);
+                    if (d < maxDist) {
+                        ctx.strokeStyle = CONNECT_COLOR + ((1 - d / maxDist) * 0.15) + ')';
+                        ctx.globalAlpha = 1;
+                        ctx.lineWidth   = 0.4;
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
@@ -79,25 +71,25 @@ const ParticleField = () => {
             }
         };
 
+        const init = () => {
+            particles = [];
+            const count = Math.floor((canvas.width * canvas.height) / 18000);
+            for (let i = 0; i < count; i++) particles.push(new Particle());
+        };
+
         const animate = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            particles.forEach(particle => {
-                particle.update();
-                particle.draw();
-            });
-
-            connectParticles();
-
-            animationFrameId = requestAnimationFrame(animate);
+            particles.forEach(p => { p.update(); p.draw(); });
+            connect();
+            raf = requestAnimationFrame(animate);
         };
 
         init();
         animate();
 
         return () => {
-            window.removeEventListener('resize', resizeCanvas);
-            cancelAnimationFrame(animationFrameId);
+            window.removeEventListener('resize', resize);
+            cancelAnimationFrame(raf);
         };
     }, []);
 
@@ -105,4 +97,3 @@ const ParticleField = () => {
 };
 
 export default ParticleField;
-

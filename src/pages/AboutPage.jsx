@@ -1,60 +1,38 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Target, Eye, Heart, Users, Award, Zap, Globe, TrendingUp } from 'lucide-react';
+import { Target, Eye, Zap, Heart, Users, Award, Globe, TrendingUp, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import './AboutPage.css';
 
+const fadeUp = {
+    hidden:  { opacity: 0, y: 28 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+};
+
+const stagger = {
+    hidden:  { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.12 } },
+};
+
 const AboutPage = () => {
-    const fadeInUp = {
-        hidden: { opacity: 0, y: 30 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.6, ease: 'easeOut' }
-        }
-    };
-
-    const staggerContainer = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.15
-            }
-        }
-    };
-
-    const values = [
-        {
-            icon: Zap,
-            title: 'Innovation at the Core',
-            description: 'Pushing boundaries with cutting-edge technology and creative solutions',
-            color: '#06b6d4'
-        },
-        {
-            icon: Heart,
-            title: 'Integrity & Transparency',
-            description: 'Building trust through honest communication and ethical practices',
-            color: '#ec4899'
-        },
-        {
-            icon: Users,
-            title: 'Community Focus',
-            description: 'Empowering communities and creating positive social impact',
-            color: '#8b5cf6'
-        },
-        {
-            icon: Award,
-            title: 'Excellence in Execution',
-            description: 'Delivering exceptional quality in every project we undertake',
-            color: '#10b981'
-        }
+    const stats = [
+        { number: '500+',  label: 'Projects Delivered' },
+        { number: '150+',  label: 'Happy Clients' },
+        { number: '99.9%', label: 'Uptime Guarantee' },
+        { number: '24/7',  label: 'Expert Support' },
     ];
 
-    const stats = [
-        { number: '500+', label: 'Projects Delivered' },
-        { number: '150+', label: 'Happy Clients' },
-        { number: '99.9%', label: 'Uptime Guarantee' },
-        { number: '24/7', label: 'Support Available' }
+    const values = [
+        { icon: Zap,   title: 'Innovation First',          description: 'Relentlessly pushing boundaries with cutting-edge tech and creative, battle-tested solutions.',  color: '#D60606' },
+        { icon: Heart, title: 'Integrity Always',          description: 'Building long-term trust through radical transparency, honesty, and ethical engineering practice.', color: '#E53535' },
+        { icon: Users, title: 'Community Impact',          description: 'Empowering local and global communities by creating inclusive, positive social and economic impact.', color: '#C40000' },
+        { icon: Award, title: 'Excellence in Execution',   description: 'Delivering exceptional quality—on time, on budget—in every single project we put our name on.',    color: '#AA0000' },
+    ];
+
+    const whyUs = [
+        { icon: Globe,      title: 'Global Expertise, Local Understanding', description: 'World-class technical knowledge combined with deep insight into African and global market dynamics.' },
+        { icon: TrendingUp, title: 'Proven Track Record',                   description: 'A portfolio of successful deliveries across multiple verticals with measurable ROI and transformative results.' },
+        { icon: Users,      title: 'True Partnership Approach',             description: "We don't just deliver projects — we embed with your team and champion your growth at every stage." },
     ];
 
     return (
@@ -62,196 +40,202 @@ const AboutPage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="about-page"
+            className="about"
         >
-            {/* Hero Section */}
-            <section className="about-hero">
+            {/* Hero */}
+            <section className="about__hero">
+                <div className="about__hero-glow" />
                 <div className="container">
                     <motion.div
                         initial="hidden"
                         animate="visible"
-                        variants={fadeInUp}
-                        className="about-hero-content"
+                        variants={fadeUp}
+                        className="about__hero-content"
                     >
-                        <span className="about-badge">About CYCUS</span>
-                        <h1 className="about-hero-title">
-                            Reshaping Industries Through <span className="text-gradient">Innovation</span>
+                        <span className="section-badge">About CYCUS</span>
+                        <h1 className="about__hero-title">
+                            Reshaping Industries Through{' '}
+                            <span className="text-gradient">Innovation</span>
                         </h1>
-                        <p className="about-hero-description">
-                            CYCUS is focused on innovation and positive transformation.
-                            Our mission is to reshape industries, empower businesses, and drive lasting impact
-                            by weaving advanced technology into the fabric of various sectors.
+                        <p className="about__hero-desc">
+                            CYCUS is a technology company laser-focused on positive transformation.
+                            Our mission is to reshape industries, empower businesses, and drive lasting
+                            impact by weaving advanced technology into the fabric of every sector we touch.
                         </p>
+                        <div className="about__hero-actions">
+                            <Link to="/services" className="btn btn-primary">
+                                Our Services <ArrowRight size={16} />
+                            </Link>
+                            <Link to="/contact" className="btn btn-outline">
+                                Get in Touch
+                            </Link>
+                        </div>
                     </motion.div>
                 </div>
             </section>
 
-            {/* Stats Section */}
-            <section className="about-stats-section">
+            {/* Stats */}
+            <section className="about__stats">
                 <div className="container">
                     <motion.div
-                        variants={staggerContainer}
+                        variants={stagger}
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
-                        className="about-stats-grid"
+                        className="about__stats-grid"
                     >
-                        {stats.map((stat, index) => (
-                            <motion.div
-                                key={index}
-                                variants={fadeInUp}
-                                className="about-stat-card"
-                            >
-                                <div className="stat-number">{stat.number}</div>
-                                <div className="stat-label">{stat.label}</div>
+                        {stats.map((s, i) => (
+                            <motion.div key={i} variants={fadeUp} className="about__stat">
+                                <div className="about__stat-number">{s.number}</div>
+                                <div className="about__stat-label">{s.label}</div>
                             </motion.div>
                         ))}
                     </motion.div>
                 </div>
             </section>
 
-            {/* Vision & Mission Section */}
-            <section className="about-vision-section">
+            {/* Vision & Mission */}
+            <section className="about__vm">
                 <div className="container">
-                    <div className="about-vision-grid">
-                        <motion.div
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                            variants={fadeInUp}
-                            className="vision-card"
-                        >
-                            <div className="vision-icon-wrapper" style={{ '--card-color': '#06b6d4' }}>
-                                <Eye size={32} />
-                            </div>
-                            <h2 className="vision-title">Our Vision</h2>
-                            <p className="vision-description">
-                                To be the leading catalyst for technological advancement in the world,
-                                redefining possibilities through AI-Driven Excellence in Healthcare, Logistics, and beyond.
-                                We envision a future where technology seamlessly integrates with every aspect of business,
-                                driving unprecedented growth and innovation.
-                            </p>
-                        </motion.div>
-
-                        <motion.div
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                            variants={fadeInUp}
-                            transition={{ delay: 0.2 }}
-                            className="vision-card"
-                        >
-                            <div className="vision-icon-wrapper" style={{ '--card-color': '#8b5cf6' }}>
-                                <Target size={32} />
-                            </div>
-                            <h2 className="vision-title">Our Mission</h2>
-                            <p className="vision-description">
-                                To empower businesses with transformative technology solutions that drive measurable results.
-                                We are committed to delivering excellence through innovation, integrity, and a deep understanding
-                                of our clients' unique challenges. Our mission is to be more than a service provider—we are
-                                your strategic technology partner.
-                            </p>
-                        </motion.div>
+                    <div className="about__vm-grid">
+                        {[
+                            {
+                                icon: Eye,
+                                title: 'Our Vision',
+                                color: '#D60606',
+                                text: 'To be the leading catalyst for technological advancement globally — redefining possibilities through AI-driven excellence in Healthcare, Logistics, and beyond. We envision a future where technology seamlessly integrates with every aspect of business, driving unprecedented growth.',
+                            },
+                            {
+                                icon: Target,
+                                title: 'Our Mission',
+                                color: '#A50505',
+                                text: 'To empower businesses with transformative technology solutions that deliver measurable results. We are committed to excellence through innovation, integrity, and deep understanding of our clients\' unique challenges. We are more than a service provider — we are your strategic technology partner.',
+                            },
+                        ].map((item, i) => (
+                            <motion.div
+                                key={i}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                variants={fadeUp}
+                                className="about__vm-card"
+                                style={{ '--card-accent': item.color }}
+                            >
+                                <div className="about__vm-icon">
+                                    <item.icon size={28} />
+                                </div>
+                                <h2 className="about__vm-title">{item.title}</h2>
+                                <p className="about__vm-text">{item.text}</p>
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
             </section>
 
-            {/* Values Section */}
-            <section className="about-values-section">
+            {/* Values */}
+            <section className="about__values">
                 <div className="container">
                     <motion.div
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
-                        variants={fadeInUp}
-                        className="section-header"
+                        variants={fadeUp}
+                        className="about__section-header"
                     >
-                        <h2 className="section-title">
+                        <span className="section-badge">What Drives Us</span>
+                        <h2 className="about__section-title">
                             Our Core <span className="text-gradient">Values</span>
                         </h2>
-                        <p className="section-subtitle">
-                            The principles that guide everything we do
-                        </p>
+                        <p className="about__section-subtitle">The principles that guide every decision we make.</p>
                     </motion.div>
 
                     <motion.div
-                        variants={staggerContainer}
+                        variants={stagger}
                         initial="hidden"
                         whileInView="visible"
-                        viewport={{ once: true, margin: '-100px' }}
-                        className="values-grid"
+                        viewport={{ once: true, margin: '-80px' }}
+                        className="about__values-grid"
                     >
-                        {values.map((value, index) => (
+                        {values.map((v, i) => (
                             <motion.div
-                                key={index}
-                                variants={fadeInUp}
-                                className="value-card"
+                                key={i}
+                                variants={fadeUp}
+                                whileHover={{ y: -5, transition: { duration: 0.25 } }}
+                                className="about__value-card"
+                                style={{ '--accent': v.color }}
                             >
-                                <div
-                                    className="value-icon-wrapper"
-                                    style={{ '--value-color': value.color }}
-                                >
-                                    <value.icon size={28} />
+                                <div className="about__value-icon">
+                                    <v.icon size={24} />
                                 </div>
-                                <h3 className="value-title">{value.title}</h3>
-                                <p className="value-description">{value.description}</p>
+                                <h3 className="about__value-title">{v.title}</h3>
+                                <p className="about__value-desc">{v.description}</p>
                             </motion.div>
                         ))}
                     </motion.div>
                 </div>
             </section>
 
-            {/* Why Choose Us Section */}
-            <section className="about-why-section">
+            {/* Why CYCUS */}
+            <section className="about__why">
                 <div className="container">
                     <motion.div
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
-                        variants={fadeInUp}
-                        className="section-header"
+                        variants={fadeUp}
+                        className="about__section-header"
                     >
-                        <h2 className="section-title">
-                            Why Choose <span className="text-gradient">CYCUS</span>
+                        <span className="section-badge">Why Choose Us</span>
+                        <h2 className="about__section-title">
+                            What Sets <span className="text-gradient">CYCUS Apart</span>
                         </h2>
-                        <p className="section-subtitle">
-                            What sets us apart in the technology landscape
-                        </p>
+                        <p className="about__section-subtitle">The qualities that make us the partner of choice for ambitious organisations.</p>
                     </motion.div>
 
                     <motion.div
-                        variants={staggerContainer}
+                        variants={stagger}
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
-                        className="why-grid"
+                        className="about__why-grid"
                     >
-                        <motion.div variants={fadeInUp} className="why-card">
-                            <Globe className="why-icon" size={40} />
-                            <h3 className="why-title">Global Expertise, Local Understanding</h3>
-                            <p className="why-description">
-                                We combine world-class technical expertise with deep understanding of local markets,
-                                ensuring solutions that work in your specific context.
-                            </p>
-                        </motion.div>
+                        {whyUs.map((w, i) => (
+                            <motion.div key={i} variants={fadeUp} className="about__why-card">
+                                <div className="about__why-icon">
+                                    <w.icon size={26} />
+                                </div>
+                                <h3 className="about__why-title">{w.title}</h3>
+                                <p className="about__why-desc">{w.description}</p>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
+            </section>
 
-                        <motion.div variants={fadeInUp} className="why-card">
-                            <TrendingUp className="why-icon" size={40} />
-                            <h3 className="why-title">Proven Track Record</h3>
-                            <p className="why-description">
-                                Our portfolio speaks for itself—successful projects across multiple industries,
-                                delivering measurable ROI and transformative results.
-                            </p>
-                        </motion.div>
-
-                        <motion.div variants={fadeInUp} className="why-card">
-                            <Users className="why-icon" size={40} />
-                            <h3 className="why-title">Partnership Approach</h3>
-                            <p className="why-description">
-                                We don't just deliver projects—we build lasting partnerships, supporting your
-                                growth journey every step of the way.
-                            </p>
-                        </motion.div>
+            {/* CTA */}
+            <section className="about__cta">
+                <div className="container">
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        variants={fadeUp}
+                        className="about__cta-card"
+                    >
+                        <h2 className="about__cta-title">
+                            Ready to transform your business?
+                        </h2>
+                        <p className="about__cta-text">
+                            Let's have a conversation about your goals. Our team will craft a tailored technology roadmap for your organisation.
+                        </p>
+                        <div className="about__cta-actions">
+                            <Link to="/contact" className="btn btn-primary">
+                                Start a Conversation <ArrowRight size={16} />
+                            </Link>
+                            <Link to="/services" className="btn btn-outline">
+                                View Services
+                            </Link>
+                        </div>
                     </motion.div>
                 </div>
             </section>

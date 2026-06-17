@@ -5,84 +5,101 @@ import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [scrolled,    setScrolled]    = useState(false);
+    const [menuOpen,    setMenuOpen]    = useState(false);
     const location = useLocation();
 
     useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 20);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        const fn = () => setScrolled(window.scrollY > 50);
+        window.addEventListener('scroll', fn, { passive: true });
+        return () => window.removeEventListener('scroll', fn);
     }, []);
 
-    // Check if we are on the home page for transparent header logic
-    const isHome = location.pathname === '/';
+    useEffect(() => { setMenuOpen(false); }, [location.pathname]);
 
-    // Force solid header on non-home pages
-    const headerClass = `header ${isScrolled || !isHome ? 'scrolled' : ''}`;
+    useEffect(() => {
+        document.body.style.overflow = menuOpen ? 'hidden' : '';
+        return () => { document.body.style.overflow = ''; };
+    }, [menuOpen]);
 
-    const navLinks = [
-        { name: 'Home', href: '/' },
+    const isHome   = location.pathname === '/';
+    const isActive = (p) => location.pathname === p;
+
+    const links = [
+        { name: 'Home',     href: '/' },
         { name: 'Services', href: '/services' },
-        { name: 'About', href: '/about' },
-        { name: 'Contact', href: '/contact' },
+        { name: 'About',    href: '/about' },
+        { name: 'Contact',  href: '/contact' },
     ];
 
     return (
-        <nav className={headerClass}>
-            <div className="container header-content">
-                <Link to="/" className="logo">
-                    <span className="text-white">CY</span>
-                    <span className="text-primary">CUS</span>
-                </Link>
+        <header className={`hdr ${scrolled || !isHome ? 'hdr--solid' : ''}`}>
+            <div className="hdr__inner">
+                <Link to="/" className="hdr__logo">CY<span>CUS</span></Link>
 
-                {/* Desktop Nav */}
-                <div className="nav-desktop">
-                    {navLinks.map((link) => (
-                        <Link key={link.name} to={link.href} className={`nav-link ${location.pathname === link.href ? 'text-primary' : ''}`}>
-                            {link.name}
+                <nav className="hdr__nav">
+                    {links.map(l => (
+                        <Link
+                            key={l.name}
+                            to={l.href}
+                            className={`hdr__link ${isActive(l.href) ? 'hdr__link--on' : ''}`}
+                        >
+                            {l.name}
                         </Link>
                     ))}
-                    <Link to="/contact" className="btn btn-primary">
-                        Get Started
-                    </Link>
-                </div>
+                </nav>
 
-                {/* Mobile Menu Button */}
-                <button
-                    className="mobile-toggle"
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                >
-                    {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
+                <div className="hdr__end">
+                    <Link to="/contact" className="hdr__cta">Get Started</Link>
+                    <button
+                        className="hdr__burger"
+                        onClick={() => setMenuOpen(v => !v)}
+                        aria-label="Toggle menu"
+                    >
+                        {menuOpen ? <X size={20} /> : <Menu size={20} />}
+                    </button>
+                </div>
             </div>
 
-            {/* Mobile Nav */}
             <AnimatePresence>
-                {isMobileMenuOpen && (
+                {menuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="mobile-menu"
+                        initial={{ opacity: 0, y: -6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -6 }}
+                        transition={{ duration: 0.18 }}
+                        className="hdr__mobile"
                     >
-                        <div className="mobile-menu-links">
-                            {navLinks.map((link) => (
+                        {links.map((l, i) => (
+                            <motion.div
+                                key={l.name}
+                                initial={{ opacity: 0, x: -14 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: i * 0.06 }}
+                            >
                                 <Link
-                                    key={link.name}
-                                    to={link.href}
-                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    to={l.href}
+                                    className={`hdr__mob-link ${isActive(l.href) ? 'hdr__mob-link--on' : ''}`}
                                 >
-                                    {link.name}
+                                    <span className="hdr__mob-num">0{i + 1}</span>
+                                    {l.name}
                                 </Link>
-                            ))}
-                        </div>
+                            </motion.div>
+                        ))}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.28 }}
+                            className="hdr__mob-cta"
+                        >
+                            <Link to="/contact" className="btn btn-primary" style={{ width: '100%' }}>
+                                Get Started
+                            </Link>
+                        </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>
-        </nav>
+        </header>
     );
 };
 
