@@ -2,26 +2,27 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import './FeatureCards.css';
 
+/* 2×2 grid — mirrors Vercept's "Why Vercept?" section exactly */
 const reasons = [
     {
         num: '01',
-        title: 'Innovation at Every Layer',
-        body: 'We don\'t retrofit old thinking. Our teams architect solutions from the ground up using the latest AI, cloud-native, and security frameworks — so what we build never becomes technical debt.',
+        title: 'Get the recognition your tech stack has earned.',
+        body: 'The organisations below you in capability keep winning the contracts and the partnerships. That ends here.',
     },
     {
         num: '02',
-        title: 'Military-Grade Security',
-        body: 'Every system we ship is hardened by default. Zero-trust architecture, end-to-end encryption, and continuous threat monitoring are standard — not optional add-ons.',
+        title: 'Become the obvious choice to enterprise buyers.',
+        body: 'Decision-makers form a view before they reach your calendar. We make sure your platform works in your favour.',
     },
     {
         num: '03',
-        title: 'Proven Across Verticals',
-        body: 'From FinTech to HealthTech and Logistics, we bring battle-tested experience to each engagement. Your industry has nuance — we\'ve already navigated it.',
+        title: 'Close projects faster with less friction.',
+        body: 'Smaller firms lose mandates to less capable competitors every day simply because their technology doesn\'t instil confidence. We close that gap.',
     },
     {
         num: '04',
-        title: 'Partners, Not Vendors',
-        body: 'We embed with your team, align to your goals, and stay accountable beyond delivery. Your success is our KPI — not just a signed statement of work.',
+        title: 'Build a position competitors can\'t copy.',
+        body: 'AI infrastructure, security architecture and digital systems that take years to earn — so once you\'re ahead, you stay ahead.',
     },
 ];
 
@@ -30,28 +31,29 @@ const FeatureCards = () => (
         <div className="container">
             {/* Header */}
             <div className="why__head">
-                <p className="why__label">Why CYCUS</p>
+                <p className="why__label">Why CYCUS?</p>
                 <h2 className="why__title">
-                    We Close the Gap Between
-                    <br /><em>Ambition and Execution.</em>
+                    We Close The Gap Between<br />
+                    <em>Your Scale And How The</em><br />
+                    Market Sees You.
                 </h2>
             </div>
 
-            {/* Numbered reasons */}
-            <div className="why__list">
+            {/* 2×2 grid — Vercept's exact layout */}
+            <div className="why__grid">
                 {reasons.map((r, i) => (
                     <motion.div
                         key={r.num}
-                        initial={{ opacity: 0, y: 24 }}
+                        initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: '-40px' }}
-                        transition={{ delay: i * 0.08, duration: 0.55, ease: 'easeOut' }}
-                        className="why__item"
+                        transition={{ delay: i * 0.07, duration: 0.5, ease: 'easeOut' }}
+                        className="why__card"
                     >
-                        <span className="why__num">{r.num} /</span>
-                        <div className="why__content">
-                            <h3 className="why__item-title">{r.title}</h3>
-                            <p className="why__item-body">{r.body}</p>
+                        <div className="why__card-num">{r.num}</div>
+                        <div className="why__card-content">
+                            <h3 className="why__card-title">{r.title}</h3>
+                            <p className="why__card-body">{r.body}</p>
                         </div>
                     </motion.div>
                 ))}

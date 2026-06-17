@@ -1,0 +1,54 @@
+/* ═══ TRUST STRIP ═══ */
+.trust {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-2);
+}
+
+.trust__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: flex-start;
+}
+
+@media (min-width: 768px) {
+    .trust__inner {
+        flex-direction: row;
+        align-items: center;
+        gap: 2.5rem;
+    }
+}
+
+.trust__label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-3);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.trust__logos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 0;
+}
+
+.trust__logo {
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--gray-2);
+    padding: 0 1.25rem;
+    border-right: 1px solid var(--border);
+    line-height: 1.6;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+}
+
+.trust__logo:first-child { padding-left: 0; }
+.trust__logo:last-child  { border-right: none; }
+.trust__logo:hover       { color: var(--white); }

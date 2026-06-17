@@ -31,7 +31,6 @@ const ServicesSection = () => {
                 {/* Accordion list */}
                 <div className="svc__list">
                     {servicesData.map((svc, i) => {
-                        const Icon = svc.icon;
                         const isOpen = open === svc.id;
 
                         return (
@@ -42,21 +41,14 @@ const ServicesSection = () => {
                                     aria-expanded={isOpen}
                                 >
                                     <span className="svc__num">({String(i + 1).padStart(3, '0')})</span>
-
-                                    <span className="svc__row-icon">
-                                        <Icon size={18} strokeWidth={1.75} />
-                                    </span>
-
                                     <span className="svc__row-title">{svc.title}</span>
-
                                     <div className="svc__row-tags">
                                         {svc.features.slice(0, 2).map((f, fi) => (
                                             <span key={fi} className="svc__tag">{f.split(' ').slice(0, 2).join(' ')}</span>
                                         ))}
                                     </div>
-
                                     <span className="svc__toggle">
-                                        {isOpen ? <Minus size={18} /> : <Plus size={18} />}
+                                        {isOpen ? <Minus size={16} /> : <Plus size={16} />}
                                     </span>
                                 </button>
 

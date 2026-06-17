@@ -1,12 +1,12 @@
-/* ═══ WHY CYCUS — NUMBERED ═══ */
+/* ═══ WHY CYCUS — 2×2 GRID (Vercept style) ═══ */
 .why {
     padding: 7rem 0;
     border-bottom: 1px solid var(--border);
 }
 
-/* ─── Header ─── */
+/* ── Header ── */
 .why__head {
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
     padding-bottom: 3rem;
     border-bottom: 1px solid var(--border);
 }
@@ -17,16 +17,16 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--gray-2);
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
 }
 
 .why__title {
-    font-size: clamp(2.2rem, 5.5vw, 4.5rem);
+    font-size: clamp(2rem, 5vw, 4.5rem);
     font-weight: 900;
     letter-spacing: -0.04em;
-    line-height: 1.1;
+    line-height: 1.08;
     color: var(--white);
-    max-width: 720px;
+    max-width: 700px;
 }
 
 .why__title em {
@@ -35,59 +35,66 @@
     color: var(--gray-1);
 }
 
-/* ─── List ─── */
-.why__list {
-    display: flex;
-    flex-direction: column;
+/* ── 2×2 Grid ── */
+.why__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
 }
-
-/* ─── Item ─── */
-.why__item {
-    display: flex;
-    align-items: flex-start;
-    gap: 2.5rem;
-    padding: 2.5rem 0;
-    border-bottom: 1px solid var(--border);
-    transition: background 0.2s ease;
-}
-
-.why__item:hover { background: rgba(255,255,255,0.015); }
 
 @media (min-width: 768px) {
-    .why__item { gap: 4rem; }
+    .why__grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-.why__num {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+/* ── Card ── */
+.why__card {
+    background: var(--bg);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: background 0.2s ease;
+    cursor: default;
+}
+
+.why__card:hover { background: var(--bg-2); }
+
+/* Large number — Vercept's bold 01, 02, 03, 04 */
+.why__card-num {
+    font-size: clamp(3rem, 6vw, 5rem);
     font-weight: 900;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.06em;
     color: var(--gray-3);
-    flex-shrink: 0;
-    min-width: 80px;
     line-height: 1;
-    padding-top: 0.1rem;
     transition: color 0.2s ease;
 }
 
-.why__item:hover .why__num { color: var(--red); }
+.why__card:hover .why__card-num { color: var(--red); }
 
-.why__content {
-    flex: 1;
-    padding-top: 0.25rem;
+.why__card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
 }
 
-.why__item-title {
-    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+.why__card-title {
+    font-size: clamp(1rem, 2vw, 1.25rem);
     font-weight: 700;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
     color: var(--white);
-    margin-bottom: 0.875rem;
-    line-height: 1.25;
 }
 
-.why__item-body {
+.why__card-body {
     font-size: 0.9375rem;
     line-height: 1.8;
     color: var(--gray-1);
-    max-width: 580px;
+}
+
+@media (max-width: 640px) {
+    .why__card { padding: 2rem 1.5rem; }
 }

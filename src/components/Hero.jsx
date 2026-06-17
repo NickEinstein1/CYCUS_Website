@@ -1,60 +1,81 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import './Hero.css';
 
+const cyclingServices = [
+    'Enterprise AI Solutions',
+    'Cyber Defense Systems',
+    'Secure Cloud Infrastructure',
+    'Data Intelligence Platforms',
+    'HealthTech Innovation',
+    'Smart Logistics Technology',
+    'Web & Software Engineering',
+];
+
 const Hero = () => {
+    const [index, setIndex] = useState(0);
+
+    useEffect(() => {
+        const id = setInterval(() => {
+            setIndex(p => (p + 1) % cyclingServices.length);
+        }, 2400);
+        return () => clearInterval(id);
+    }, []);
+
     return (
         <section className="hero">
-            {/* Top meta row */}
-            <div className="hero__meta">
-                <span className="hero__meta-item">CYCUS Technologies</span>
-                <span className="hero__meta-sep">×</span>
-                <span className="hero__meta-item">Nairobi, Kenya</span>
-                <span className="hero__meta-sep">×</span>
-                <span className="hero__meta-item">Est. 2024</span>
+            {/* ── Brand name ── */}
+            <div className="hero__brand">
+                <div className="hero__brand-name">
+                    CYCUS<sup className="hero__brand-reg">®</sup>
+                </div>
+                <div className="hero__brand-sub">TECHNOLOGIES</div>
             </div>
 
-            {/* Main title */}
-            <motion.h1
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-                className="hero__title"
-            >
-                <span className="hero__title-line">Architecting</span>
-                <span className="hero__title-line hero__title-line--indent">the Future</span>
-                <span className="hero__title-line">
-                    of <em>Secure</em> <span className="hero__title-red">AI.</span>
-                </span>
-            </motion.h1>
+            {/* ── Cycling service line ── */}
+            <div className="hero__cycle-row">
+                <span className="hero__cycle-label">Currently building</span>
+                <div className="hero__cycle-wrap">
+                    <AnimatePresence mode="wait">
+                        <motion.span
+                            key={index}
+                            className="hero__cycle-text"
+                            initial={{ opacity: 0, y: 14 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -14 }}
+                            transition={{ duration: 0.35, ease: 'easeOut' }}
+                        >
+                            {cyclingServices[index]}
+                        </motion.span>
+                    </AnimatePresence>
+                </div>
+                <span className="hero__cycle-context">→ From Startup to Enterprise</span>
+            </div>
 
-            {/* Bottom row */}
-            <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.4, ease: 'easeOut' }}
-                className="hero__bottom"
-            >
+            {/* ── Main statement ── */}
+            <div className="hero__statement">
+                <h1 className="hero__statement-title">
+                    Next-generation intelligence<br />
+                    <em>for Africa's most ambitious</em><br />
+                    organisations.
+                </h1>
+            </div>
+
+            {/* ── Bottom row ── */}
+            <div className="hero__bottom">
                 <p className="hero__desc">
-                    Pioneering sovereign intelligence and fortress-grade digital infrastructure
-                    that powers the world's most critical operations.
+                    We build the AI systems, cyber architectures, and digital platforms that power
+                    critical operations — from Nairobi to the world.
                 </p>
                 <div className="hero__actions">
                     <Link to="/services" className="hero__cta">
-                        Explore Services
-                        <ArrowRight size={16} />
+                        View Our Work →
                     </Link>
                     <Link to="/contact" className="hero__link">
-                        Start a project →
+                        Start a project
                     </Link>
                 </div>
-            </motion.div>
-
-            {/* Corner label */}
-            <div className="hero__corner">
-                <span>Next-Gen Intelligence</span>
             </div>
         </section>
     );
