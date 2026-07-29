@@ -22,8 +22,8 @@ const ContactSection = () => {
                             <em>in mind?</em>
                         </h2>
                         <p className="ctct__desc">
-                            We work with ambitious organisations ready to leverage technology as a
-                            competitive advantage. Tell us about your goals and we'll respond within 24 hours.
+                            We work with organisations willing to ask harder questions.
+                            Tell us about your challenge and we'll respond within 24 hours.
                         </p>
 
                         <div className="ctct__info">

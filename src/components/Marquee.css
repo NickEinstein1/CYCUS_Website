@@ -1,16 +1,14 @@
-/* ═══ MARQUEE TICKER ═══ */
+/* ═══ MARQUEE TICKER — LIGHT ═══ */
 .marquee {
     overflow: hidden;
     border-top:    1px solid var(--border);
     border-bottom: 1px solid var(--border);
-    padding: 1.125rem 0;
-    background: var(--bg);
+    padding: 1rem 0;
+    background: var(--bg-2);
     user-select: none;
 }
 
-.marquee--inverted {
-    background: var(--bg-2);
-}
+.marquee--inverted { background: var(--bg-3); }
 
 .marquee__track {
     display: flex;
@@ -31,14 +29,9 @@
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--gray-2);
+    color: var(--ink-3);
     white-space: nowrap;
     padding-right: 1.25rem;
-    transition: color 0.2s ease;
-}
-
-.marquee--inverted .marquee__item {
-    color: var(--gray-2);
 }
 
 .marquee__dot {
@@ -46,7 +39,4 @@
     font-size: 0.65rem;
 }
 
-/* Pause on hover */
-.marquee:hover .marquee__track {
-    animation-play-state: paused;
-}
+.marquee:hover .marquee__track { animation-play-state: paused; }

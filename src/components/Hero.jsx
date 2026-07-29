@@ -56,9 +56,8 @@ const Hero = () => {
             {/* ── Main statement ── */}
             <div className="hero__statement">
                 <h1 className="hero__statement-title">
-                    Next-generation intelligence<br />
-                    <em>for Africa's most ambitious</em><br />
-                    organisations.
+                    Built on hard questions<br />
+                    <em>and impossible ideas.</em>
                 </h1>
             </div>
 
@@ -66,7 +65,7 @@ const Hero = () => {
             <div className="hero__bottom">
                 <p className="hero__desc">
                     We build the AI systems, cyber architectures, and digital platforms that power
-                    critical operations — from Nairobi to the world.
+                    critical operations — for organisations that refuse to settle for easy answers.
                 </p>
                 <div className="hero__actions">
                     <Link to="/services" className="hero__cta">

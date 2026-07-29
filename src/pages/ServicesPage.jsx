@@ -54,7 +54,7 @@ const ServicesPage = () => (
                     }}
                 >
                     From enterprise AI to cybersecurity, cloud infrastructure, and beyond —
-                    end-to-end technology capabilities built to move as fast as your ambition.
+                    built on hard questions and impossible ideas, end to end.
                 </p>
             </div>
         </div>

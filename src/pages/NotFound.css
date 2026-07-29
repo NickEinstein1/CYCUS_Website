@@ -1,22 +1,17 @@
-/* ═══ 404 PAGE — EDITORIAL ═══ */
+/* ═══ 404 — LIGHT ═══ */
 .nf {
     min-height: 100vh;
     display: flex;
     align-items: center;
     padding: calc(var(--hh) + 2rem) 0 4rem;
     border-bottom: 1px solid var(--border);
+    background: var(--bg);
 }
 
-.nf__container {
-    width: 100%;
-}
+.nf__container { width: 100%; }
 
-.nf__content {
-    display: flex;
-    flex-direction: column;
-}
+.nf__content { display: flex; flex-direction: column; }
 
-/* Top meta row */
 .nf__top {
     display: flex;
     align-items: center;
@@ -29,7 +24,7 @@
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--gray-2);
+    color: var(--ink-3);
 }
 
 .nf__status {
@@ -38,8 +33,9 @@
     letter-spacing: 0.1em;
     color: var(--red);
     padding: 0.2rem 0.5rem;
-    border: 1px solid rgba(214,6,6,0.3);
+    border: 1px solid var(--red-border);
     border-radius: 4px;
+    background: var(--red-dim);
 }
 
 /* Giant number */
@@ -48,7 +44,7 @@
     font-weight: 900;
     letter-spacing: -0.07em;
     line-height: 0.85;
-    color: var(--gray-3);
+    color: var(--bg-3);
     margin-bottom: 3rem;
     user-select: none;
 }
@@ -74,13 +70,13 @@
     font-size: clamp(1.5rem, 4vw, 2.5rem);
     font-weight: 700;
     letter-spacing: -0.03em;
-    color: var(--white);
+    color: var(--ink);
     margin-bottom: 0.625rem;
 }
 
 .nf__desc {
     font-size: 1rem;
-    color: var(--gray-1);
+    color: var(--ink-2);
     line-height: 1.65;
     max-width: 400px;
 }
@@ -96,25 +92,25 @@
     display: inline-flex;
     align-items: center;
     padding: 0.875rem 1.75rem;
-    background: var(--red);
-    color: #fff;
+    background: var(--ink);
+    color: var(--bg);
     font-size: 0.875rem;
     font-weight: 600;
     border-radius: 9999px;
     text-decoration: none;
     transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(28,25,22,0.1);
 }
-
 .nf__btn-primary:hover {
-    background: #EE0707;
+    background: #2E2A26;
     transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(214,6,6,0.35);
+    box-shadow: 0 6px 16px rgba(28,25,22,0.16);
 }
 
 .nf__btn-ghost {
     font-size: 0.875rem;
     font-weight: 500;
-    color: var(--gray-1);
+    color: var(--ink-2);
     background: none;
     border: none;
     cursor: pointer;
@@ -122,5 +118,11 @@
     font-family: var(--font);
     transition: color 0.2s ease;
 }
+.nf__btn-ghost:hover { color: var(--ink); }
 
-.nf__btn-ghost:hover { color: var(--white); }
+/* ─── Responsive ─── */
+@media (max-width: 640px) {
+    .nf__code    { margin-bottom: 2rem; }
+    .nf__actions { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .nf__bottom  { gap: 1.75rem; padding-top: 1.75rem; }
+}

@@ -23,7 +23,7 @@ const Footer = () => {
                         </h2>
                         <div className="ftr__cta-right">
                             <p className="ftr__cta-desc">
-                                We work with ambitious organisations ready to leverage technology as a competitive advantage.
+                                We work with organisations ready to ask harder questions — and build the answers that actually last.
                             </p>
                             <Link to="/contact" className="ftr__cta-btn">
                                 Start the conversation →
@@ -40,7 +40,7 @@ const Footer = () => {
                     <div className="ftr__brand">
                         <Link to="/" className="ftr__logo">CY<span>CUS</span></Link>
                         <p className="ftr__tagline">
-                            Reshaping industries through<br />advanced technology.
+                        Built on hard questions<br />and impossible ideas.
                         </p>
                         <div className="ftr__social">
                             <a href="https://linkedin.com/company/cycus" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="ftr__social-icon"><Linkedin size={15} /></a>

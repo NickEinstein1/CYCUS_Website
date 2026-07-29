@@ -1,10 +1,10 @@
-/* ═══ CASE STUDIES — VERCEPT STYLE ═══ */
+/* ═══ CASE STUDIES — LIGHT ═══ */
 .work {
     padding: 7rem 0;
     border-bottom: 1px solid var(--border);
+    background: var(--bg);
 }
 
-/* ─── Header ─── */
 .work__head {
     display: flex;
     flex-direction: column;
@@ -27,7 +27,7 @@
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--gray-2);
+    color: var(--ink-3);
     margin-bottom: 0.875rem;
 }
 
@@ -36,18 +36,18 @@
     font-weight: 900;
     letter-spacing: -0.045em;
     line-height: 1.0;
-    color: var(--white);
+    color: var(--ink);
 }
 
 .work__head-desc {
     font-size: 1rem;
     line-height: 1.75;
-    color: var(--gray-1);
+    color: var(--ink-2);
     max-width: 380px;
     align-self: flex-end;
 }
 
-/* ─── Grid ─── */
+/* Grid */
 .work__grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -59,21 +59,18 @@
     margin-bottom: 3rem;
 }
 
-@media (min-width: 640px) {
-    .work__grid { grid-template-columns: repeat(2, 1fr); }
-}
+@media (min-width: 640px) { .work__grid { grid-template-columns: repeat(2, 1fr); } }
 
-/* ─── Card ─── */
+/* Card */
 .work__card {
-    background: var(--bg-2);
+    background: var(--bg);
     display: flex;
     flex-direction: column;
     transition: background 0.2s ease;
 }
+.work__card:hover { background: var(--bg-2); }
 
-.work__card:hover { background: var(--bg-3); }
-
-/* Image wrap */
+/* Image */
 .work__img-wrap {
     position: relative;
     aspect-ratio: 4 / 3;
@@ -85,47 +82,50 @@
     height: 100%;
     object-fit: cover;
     transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: saturate(0.85);
 }
-
-.work__card:hover .work__img { transform: scale(1.05); }
+.work__card:hover .work__img {
+    transform: scale(1.05);
+    filter: saturate(1);
+}
 
 .work__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(5,5,5,0.0) 40%, rgba(5,5,5,0.55) 100%);
+    background: linear-gradient(180deg, rgba(249,247,244,0) 50%, rgba(249,247,244,0.3) 100%);
     pointer-events: none;
 }
 
-/* Hover "Let's talk" overlay — Vercept's signature card element */
+/* Hover "Let's talk" */
 .work__hover-cta {
     position: absolute;
     inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(5,5,5,0.6);
+    background: rgba(28,25,22,0.45);
     opacity: 0;
     transition: opacity 0.25s ease;
     backdrop-filter: blur(4px);
 }
-
 .work__card:hover .work__hover-cta { opacity: 1; }
 
 .work__talk-btn {
     display: inline-flex;
     align-items: center;
     padding: 0.75rem 1.75rem;
-    background: var(--white);
-    color: var(--bg);
+    background: #F9F7F4;
+    color: var(--ink);
     font-size: 0.875rem;
     font-weight: 700;
     border-radius: 9999px;
     text-decoration: none;
-    transition: transform 0.2s ease;
-    letter-spacing: -0.01em;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
-.work__talk-btn:hover { transform: scale(1.03); }
+.work__talk-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 16px rgba(28,25,22,0.15);
+}
 
 /* Card body */
 .work__card-body {
@@ -136,7 +136,6 @@
     border-top: 1px solid var(--border);
 }
 
-/* Top row: client name + "Let's talk" */
 .work__card-top {
     display: flex;
     align-items: center;
@@ -147,10 +146,9 @@
     font-size: 1rem;
     font-weight: 700;
     letter-spacing: -0.02em;
-    color: var(--white);
+    color: var(--ink);
 }
 
-/* Mid row: industry + small let's talk */
 .work__card-mid {
     display: flex;
     align-items: center;
@@ -161,32 +159,30 @@
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.04em;
-    color: var(--gray-2);
+    color: var(--ink-2);
 }
 
-/* Inline "Let's talk" links — always visible like Vercept */
+/* Inline "Let's talk" pill */
 .work__talk-inline {
     display: inline-flex;
     align-items: center;
     font-size: 0.75rem;
     font-weight: 600;
-    color: var(--gray-2);
+    color: var(--ink-2);
     text-decoration: none;
-    padding: 0.25rem 0.625rem;
-    border: 1px solid var(--border);
+    padding: 0.22rem 0.625rem;
+    border: 1px solid var(--border-2);
     border-radius: 9999px;
     transition: all 0.2s ease;
     white-space: nowrap;
+    background: var(--bg);
 }
-
 .work__talk-inline:hover {
-    border-color: var(--white);
-    color: var(--white);
+    border-color: var(--ink);
+    color: var(--ink);
 }
-
 .work__talk-inline--sm { font-size: 0.68rem; }
 
-/* Bottom: title + result + tier badge */
 .work__card-bot {
     margin-top: 0.75rem;
     display: flex;
@@ -198,7 +194,7 @@
     font-size: 0.9375rem;
     font-weight: 600;
     letter-spacing: -0.015em;
-    color: var(--gray-1);
+    color: var(--ink-2);
     line-height: 1.3;
 }
 
@@ -210,27 +206,25 @@
 
 .work__result {
     font-size: 0.75rem;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--red);
 }
 
-/* Tier badge — Vercept's "FastTrack®" / "Elite®" style */
+/* Tier badge */
 .work__tier {
     font-size: 0.68rem;
     font-weight: 700;
     letter-spacing: 0.04em;
-    color: var(--gray-3);
+    color: var(--ink-3);
     padding: 0.2rem 0.5rem;
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-2);
     border-radius: 4px;
     white-space: nowrap;
+    background: var(--bg-2);
 }
 
 /* Footer CTA */
-.work__foot {
-    display: flex;
-    justify-content: flex-end;
-}
+.work__foot { display: flex; justify-content: flex-end; }
 
 .work__foot-btn {
     display: inline-flex;
@@ -238,9 +232,22 @@
     gap: 0.375rem;
     font-size: 0.875rem;
     font-weight: 600;
-    color: var(--gray-1);
+    color: var(--ink-2);
     text-decoration: none;
     transition: color 0.2s ease;
 }
+.work__foot-btn:hover { color: var(--ink); }
 
-.work__foot-btn:hover { color: var(--white); }
+/* ─── Responsive ─── */
+@media (max-width: 1023px) {
+    .work       { padding: 5rem 0; }
+    .work__head { margin-bottom: 3rem; padding-bottom: 2rem; }
+}
+
+@media (max-width: 640px) {
+    .work          { padding: 3.5rem 0; }
+    .work__head    { margin-bottom: 2rem; padding-bottom: 1.75rem; gap: 1.25rem; }
+    .work__grid    { grid-template-columns: 1fr; border-radius: 12px; margin-bottom: 2rem; }
+    .work__card-body { padding: 1rem 1.125rem 1.25rem; }
+    .work__title   { font-size: clamp(2rem, 8vw, 5.5rem); }
+}

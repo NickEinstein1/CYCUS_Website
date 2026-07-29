@@ -55,8 +55,8 @@ const CaseStudies = () => (
                     </h2>
                 </div>
                 <p className="work__head-desc">
-                    We build the platforms, AI systems and security architectures that power
-                    critical operations across Africa and beyond.
+                    We build the platforms, AI systems and security architectures that come from
+                    asking harder questions than anyone else in the room.
                 </p>
             </div>
 

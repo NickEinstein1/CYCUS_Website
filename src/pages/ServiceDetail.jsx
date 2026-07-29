@@ -117,7 +117,7 @@ const ServiceDetail = () => {
                                 {[
                                     '500+ projects delivered',
                                     '24/7 expert support',
-                                    '99.9% uptime guarantee',
+                                    '99.99% uptime guarantee',
                                     'HIPAA & SOC2 compliant',
                                 ].map((item, i) => (
                                     <li key={i}>

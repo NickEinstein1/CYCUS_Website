@@ -32,10 +32,10 @@ const Counter = ({ end, suffix = '' }) => {
 };
 
 const stats = [
-    { value: 500,   suffix: '+',  label: 'Projects Delivered',          desc: 'across enterprise clients' },
-    { value: 150,   suffix: '+',  label: 'Enterprise Clients',           desc: 'in 20+ countries' },
-    { value: 99.9,  suffix: '%',  label: 'Security Accuracy',            desc: 'incidents prevented' },
-    { value: 99.99, suffix: '%',  label: 'Uptime Guarantee',             desc: 'on managed systems' },
+    { value: 500,   suffix: '+',  label: 'Projects Delivered', desc: 'across enterprise clients' },
+    { value: 150,   suffix: '+',  label: 'Enterprise Clients',  desc: 'in 20+ countries' },
+    { value: 24,    suffix: '/7', label: 'Expert Support',      desc: 'always available' },
+    { value: 99.99, suffix: '%',  label: 'Uptime Guarantee',    desc: 'on managed systems' },
 ];
 
 const StatsCounter = () => (

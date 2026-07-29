@@ -1,6 +1,7 @@
-/* ═══ STATS ═══ */
+/* ═══ STATS — LIGHT ═══ */
 .stats {
     border-bottom: 1px solid var(--border);
+    background: var(--bg);
 }
 
 .stats__grid {
@@ -8,9 +9,7 @@
     grid-template-columns: repeat(2, 1fr);
 }
 
-@media (min-width: 768px) {
-    .stats__grid { grid-template-columns: repeat(4, 1fr); }
-}
+@media (min-width: 768px) { .stats__grid { grid-template-columns: repeat(4, 1fr); } }
 
 .stats__item {
     padding: 3rem 2rem;
@@ -21,10 +20,8 @@
 .stats__item::after {
     content: '';
     position: absolute;
-    top: 20%;
-    right: 0;
-    height: 60%;
-    width: 1px;
+    top: 20%; right: 0;
+    height: 60%; width: 1px;
     background: var(--border);
 }
 
@@ -40,10 +37,8 @@
     .stats__item::before {
         content: '';
         position: absolute;
-        bottom: 0;
-        left: 10%;
-        width: 80%;
-        height: 1px;
+        bottom: 0; left: 10%;
+        width: 80%; height: 1px;
         background: var(--border);
     }
     .stats__item:nth-child(3)::before,
@@ -55,19 +50,25 @@
     font-weight: 900;
     letter-spacing: -0.05em;
     line-height: 1;
-    color: var(--white);
+    color: var(--ink);
     margin-bottom: 0.625rem;
 }
 
 .stats__label {
     font-size: 0.875rem;
     font-weight: 600;
-    color: var(--white);
+    color: var(--ink);
     margin-bottom: 0.3rem;
     letter-spacing: -0.01em;
 }
 
 .stats__desc {
     font-size: 0.75rem;
-    color: var(--gray-2);
+    color: var(--ink-3);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 480px) {
+    .stats__item { padding: 2rem 1rem; }
+    .stats__val  { font-size: clamp(2rem, 7vw, 4rem); }
 }

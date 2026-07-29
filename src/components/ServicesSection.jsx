@@ -23,8 +23,8 @@ const ServicesSection = () => {
                         </h2>
                     </div>
                     <p className="svc__head-desc">
-                        End-to-end technology solutions for every layer of your organisation —
-                        from AI strategy to infrastructure, security, and beyond.
+                        End-to-end technology built on hard questions — from AI strategy
+                        to infrastructure, security, and every layer in between.
                     </p>
                 </div>
 

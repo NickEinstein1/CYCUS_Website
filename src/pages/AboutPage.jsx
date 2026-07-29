@@ -17,10 +17,10 @@ const values = [
 ];
 
 const stats = [
-    { value: '500+',   label: 'Projects Delivered',   desc: 'across enterprise clients' },
-    { value: '150+',   label: 'Enterprise Clients',    desc: 'in 20+ countries' },
-    { value: '99.9%',  label: 'Security Accuracy',     desc: 'incidents prevented' },
-    { value: '24/7',   label: 'Expert Support',        desc: 'always available' },
+    { value: '500+',    label: 'Projects Delivered', desc: 'across enterprise clients' },
+    { value: '150+',    label: 'Enterprise Clients',  desc: 'in 20+ countries' },
+    { value: '24/7',    label: 'Expert Support',      desc: 'always available' },
+    { value: '99.99%',  label: 'Uptime Guarantee',    desc: 'on managed systems' },
 ];
 
 const AboutPage = () => (
@@ -59,9 +59,9 @@ const AboutPage = () => (
                     className="about__hero-bottom"
                 >
                     <p className="about__hero-desc">
-                        CYCUS is a technology company laser-focused on positive transformation.
-                        We weave advanced AI, cybersecurity, and infrastructure into the fabric
-                        of every sector we touch — driving growth that lasts.
+                        CYCUS is a technology company built on hard questions and impossible ideas.
+                        We exist to solve what others won't — across AI, cybersecurity,
+                        infrastructure, and every sector we touch.
                     </p>
                     <div className="about__hero-actions">
                         <Link to="/services" className="about__cta-btn">
@@ -239,8 +239,8 @@ const AboutPage = () => (
                     </h2>
                     <div className="about__cta-right">
                         <p className="about__cta-text">
-                            We work with a focused number of organisations at a time. If we're the right fit,
-                            the next step is a short conversation.
+                        We work with a focused number of organisations at a time. If you're ready to
+                        ask harder questions, the next step is a short conversation.
                         </p>
                         <div className="about__cta-actions">
                             <Link to="/contact" className="about__cta-btn">

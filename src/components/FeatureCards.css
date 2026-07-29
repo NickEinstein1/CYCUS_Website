@@ -1,10 +1,10 @@
-/* ═══ WHY CYCUS — 2×2 GRID (Vercept style) ═══ */
+/* ═══ WHY CYCUS — LIGHT ═══ */
 .why {
     padding: 7rem 0;
     border-bottom: 1px solid var(--border);
+    background: var(--bg);
 }
 
-/* ── Header ── */
 .why__head {
     margin-bottom: 4rem;
     padding-bottom: 3rem;
@@ -16,7 +16,7 @@
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--gray-2);
+    color: var(--ink-3);
     margin-bottom: 1.5rem;
 }
 
@@ -25,17 +25,17 @@
     font-weight: 900;
     letter-spacing: -0.04em;
     line-height: 1.08;
-    color: var(--white);
+    color: var(--ink);
     max-width: 700px;
 }
 
 .why__title em {
     font-style: italic;
     font-weight: 300;
-    color: var(--gray-1);
+    color: var(--ink-2);
 }
 
-/* ── 2×2 Grid ── */
+/* 2×2 grid */
 .why__grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -46,11 +46,9 @@
     overflow: hidden;
 }
 
-@media (min-width: 768px) {
-    .why__grid { grid-template-columns: repeat(2, 1fr); }
-}
+@media (min-width: 768px) { .why__grid { grid-template-columns: repeat(2, 1fr); } }
 
-/* ── Card ── */
+/* Card */
 .why__card {
     background: var(--bg);
     padding: 3rem;
@@ -60,19 +58,17 @@
     transition: background 0.2s ease;
     cursor: default;
 }
-
 .why__card:hover { background: var(--bg-2); }
 
-/* Large number — Vercept's bold 01, 02, 03, 04 */
+/* Large number */
 .why__card-num {
     font-size: clamp(3rem, 6vw, 5rem);
     font-weight: 900;
     letter-spacing: -0.06em;
-    color: var(--gray-3);
+    color: var(--bg-3);
     line-height: 1;
     transition: color 0.2s ease;
 }
-
 .why__card:hover .why__card-num { color: var(--red); }
 
 .why__card-content {
@@ -86,15 +82,25 @@
     font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1.3;
-    color: var(--white);
+    color: var(--ink);
 }
 
 .why__card-body {
     font-size: 0.9375rem;
     line-height: 1.8;
-    color: var(--gray-1);
+    color: var(--ink-2);
+}
+
+@media (max-width: 640px) { .why__card { padding: 2rem 1.5rem; } }
+
+/* ─── Responsive ─── */
+@media (max-width: 1023px) {
+    .why       { padding: 5rem 0; }
+    .why__head { margin-bottom: 3rem; padding-bottom: 2rem; }
 }
 
 @media (max-width: 640px) {
-    .why__card { padding: 2rem 1.5rem; }
+    .why        { padding: 3.5rem 0; }
+    .why__head  { margin-bottom: 2rem; padding-bottom: 1.75rem; }
+    .why__grid  { border-radius: 12px; }
 }
