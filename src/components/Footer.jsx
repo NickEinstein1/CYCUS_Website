@@ -1,13 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Linkedin, Instagram, Facebook } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
 import './Footer.css';
-
-const XIcon = ({ size = 16 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-    </svg>
-);
 
 const Footer = () => {
     const year = new Date().getFullYear();
@@ -44,9 +38,6 @@ const Footer = () => {
                         </p>
                         <div className="ftr__social">
                             <a href="https://linkedin.com/company/cycus" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="ftr__social-icon"><Linkedin size={15} /></a>
-                            <a href="https://twitter.com/cycus" target="_blank" rel="noopener noreferrer" aria-label="X" className="ftr__social-icon"><XIcon size={15} /></a>
-                            <a href="https://instagram.com/cycus" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="ftr__social-icon"><Instagram size={15} /></a>
-                            <a href="https://facebook.com/cycus" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="ftr__social-icon"><Facebook size={15} /></a>
                         </div>
                     </div>
 
