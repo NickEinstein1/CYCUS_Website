@@ -13,36 +13,53 @@
 
 @media (min-width: 1024px) { .hero { padding: calc(var(--hh) + 3.5rem) 3rem 4rem; } }
 
-/* Brand name */
-.hero__brand { margin-bottom: 3.5rem; }
-
-.hero__brand-name {
-    font-size: clamp(5rem, 18vw, 20rem);
-    font-weight: 900;
-    letter-spacing: -0.06em;
-    line-height: 0.88;
-    color: var(--ink);
-    text-transform: uppercase;
-    display: inline-block;
+/* Rotating cube */
+.hero__cube-scene {
+    --cube-size: clamp(7.5rem, 22vw, 13.5rem);
+    perspective: 1200px;
+    margin-bottom: 3.5rem;
+    height: calc(var(--cube-size) * 1.35);
+    display: flex;
+    align-items: center;
 }
 
-.hero__brand-reg {
-    font-size: 0.18em;
-    font-weight: 700;
-    vertical-align: super;
-    letter-spacing: 0;
-    color: var(--ink-3);
-    top: 0.15em;
+.hero__cube {
     position: relative;
+    width: var(--cube-size);
+    height: var(--cube-size);
+    transform-style: preserve-3d;
+    animation: hero-cube-spin 14s linear infinite;
 }
 
-.hero__brand-sub {
-    font-size: clamp(0.85rem, 2.5vw, 1.5rem);
-    font-weight: 700;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-    margin-top: 0.5rem;
+.hero__cube-face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: linear-gradient(145deg, #E84040 0%, var(--red) 55%, #A81818 100%);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    color: #F9F7F4;
+    font-size: clamp(0.72rem, 2.2vw, 1.125rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    text-align: center;
+    line-height: 1.1;
+    backface-visibility: hidden;
+}
+
+.hero__cube-face--front  { transform: rotateY(0deg) translateZ(calc(var(--cube-size) / 2)); }
+.hero__cube-face--back   { transform: rotateY(180deg) translateZ(calc(var(--cube-size) / 2)); }
+.hero__cube-face--right  { transform: rotateY(90deg) translateZ(calc(var(--cube-size) / 2)); }
+.hero__cube-face--left   { transform: rotateY(-90deg) translateZ(calc(var(--cube-size) / 2)); }
+.hero__cube-face--top    { transform: rotateX(90deg) translateZ(calc(var(--cube-size) / 2)); }
+.hero__cube-face--bottom { transform: rotateX(-90deg) translateZ(calc(var(--cube-size) / 2)); }
+
+@keyframes hero-cube-spin {
+    0%   { transform: rotateX(-16deg) rotateY(0deg); }
+    100% { transform: rotateX(-16deg) rotateY(360deg); }
 }
 
 /* Cycling row */
@@ -173,7 +190,7 @@
 
 /* ─── Responsive ─── */
 @media (max-width: 1023px) {
-    .hero__brand      { margin-bottom: 2.5rem; }
+    .hero__cube-scene { margin-bottom: 2.5rem; }
     .hero__cycle-row  { margin-bottom: 2.5rem; }
     .hero__statement  { margin-bottom: 2rem; }
 }
@@ -185,13 +202,13 @@
     }
     .hero__cycle-context { display: none; }
     .hero__actions { flex-direction: column; align-items: flex-start; gap: 1rem; }
-    .hero__brand     { margin-bottom: 1.75rem; }
+    .hero__cube-scene { margin-bottom: 1.75rem; height: calc(var(--cube-size) * 1.2); }
     .hero__cycle-row { margin-bottom: 1.75rem; padding: 1rem 0; gap: 0.875rem; }
     .hero__statement { margin-bottom: 1.25rem; }
     .hero__bottom    { padding-top: 1.5rem; gap: 1.25rem; }
     .hero__desc      { font-size: 0.9375rem; }
 }
 
-@media (max-width: 380px) {
-    .hero__brand-name { font-size: clamp(3.5rem, 18vw, 20rem); }
+@media (prefers-reduced-motion: reduce) {
+    .hero__cube { animation: none; transform: rotateX(-16deg) rotateY(-24deg); }
 }

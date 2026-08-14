@@ -25,12 +25,16 @@ const Hero = () => {
 
     return (
         <section className="hero">
-            {/* ── Brand name ── */}
-            <div className="hero__brand">
-                <div className="hero__brand-name">
-                    CYCUS<sup className="hero__brand-reg">®</sup>
+            {/* ── Rotating cube ── */}
+            <div className="hero__cube-scene" aria-hidden="true">
+                <div className="hero__cube">
+                    <div className="hero__cube-face hero__cube-face--front">Reimagine</div>
+                    <div className="hero__cube-face hero__cube-face--back">Reimagine</div>
+                    <div className="hero__cube-face hero__cube-face--right">Reimagine</div>
+                    <div className="hero__cube-face hero__cube-face--left">Reimagine</div>
+                    <div className="hero__cube-face hero__cube-face--top">Reimagine</div>
+                    <div className="hero__cube-face hero__cube-face--bottom">Reimagine</div>
                 </div>
-                <div className="hero__brand-sub">TECHNOLOGIES</div>
             </div>
 
             {/* ── Cycling service line ── */}

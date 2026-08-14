@@ -16,13 +16,6 @@ const values = [
     { num: '04', title: 'Excellence in Execution',  body: 'Quality isn\'t a checkbox — it\'s the standard we hold every line of code and every deliverable to. On time. On budget. Without compromise.' },
 ];
 
-const stats = [
-    { value: '500+',    label: 'Projects Delivered', desc: 'across enterprise clients' },
-    { value: '150+',    label: 'Enterprise Clients',  desc: 'in 20+ countries' },
-    { value: '24/7',    label: 'Expert Support',      desc: 'always available' },
-    { value: '99.99%',  label: 'Uptime Guarantee',    desc: 'on managed systems' },
-];
-
 const AboutPage = () => (
     <motion.div
         initial={{ opacity: 0 }}
@@ -72,29 +65,6 @@ const AboutPage = () => (
                         </Link>
                     </div>
                 </motion.div>
-            </div>
-        </section>
-
-        {/* ── Stats ── */}
-        <section className="about__stats">
-            <div className="container">
-                <div className="about__stats-grid">
-                    {stats.map((s, i) => (
-                        <motion.div
-                            key={i}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                            variants={fadeUp}
-                            transition={{ delay: i * 0.06 }}
-                            className="about__stat"
-                        >
-                            <div className="about__stat-val">{s.value}</div>
-                            <div className="about__stat-label">{s.label}</div>
-                            <div className="about__stat-desc">{s.desc}</div>
-                        </motion.div>
-                    ))}
-                </div>
             </div>
         </section>
 

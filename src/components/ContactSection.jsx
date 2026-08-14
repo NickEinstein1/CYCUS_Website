@@ -18,8 +18,8 @@ const ContactSection = () => {
                     <div className="ctct__left">
                         <p className="ctct__label">Start the Conversation</p>
                         <h2 className="ctct__title">
-                            Have a project<br />
-                            <em>in mind?</em>
+                            Ready to<br />
+                            <em>reimagine?</em>
                         </h2>
                         <p className="ctct__desc">
                             We work with organisations willing to ask harder questions.

@@ -110,23 +110,6 @@ const ServiceDetail = () => {
                                 Browse all services
                             </Link>
                         </div>
-
-                        <div className="detail__info-card">
-                            <p className="detail__info-label">Why CYCUS?</p>
-                            <ul className="detail__info-list">
-                                {[
-                                    '500+ projects delivered',
-                                    '24/7 expert support',
-                                    '99.99% uptime guarantee',
-                                    'HIPAA & SOC2 compliant',
-                                ].map((item, i) => (
-                                    <li key={i}>
-                                        <span className="detail__info-num">0{i + 1}</span>
-                                        <span>{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
                     </aside>
                 </div>
             </div>

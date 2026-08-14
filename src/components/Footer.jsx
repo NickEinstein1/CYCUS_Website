@@ -13,7 +13,7 @@ const Footer = () => {
                 <div className="container">
                     <div className="ftr__cta-inner">
                         <h2 className="ftr__cta-title">
-                            Have a project<br />in mind?
+                            Innovation<br />is key.
                         </h2>
                         <div className="ftr__cta-right">
                             <p className="ftr__cta-desc">
