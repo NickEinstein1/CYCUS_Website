@@ -80,7 +80,7 @@ const ServicesPage = () => (
                     </p>
                     <h2 className="services__title">Browse by Service</h2>
                     <p className="services__subtitle">
-                        Click any service to read the full scope, deliverables, and case studies.
+                        Click any service to read the full scope and deliverables.
                     </p>
                 </div>
                 <div className="services__grid">
